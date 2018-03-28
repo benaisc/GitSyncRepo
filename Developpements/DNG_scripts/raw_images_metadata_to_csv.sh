@@ -3,8 +3,8 @@
 
 # @Author: Charles-Eric BENAIS-HUGOT, 27/03/2018
 
-directory_raws="/home/guru/STAGE/CODES/Developpements/DNG_scripts/fiveK_sample"
-csv_filename="metadata_test.csv"
+directory_raws="/media/icar/269f599f-6a72-48fd-b97c-941595d7b39f/Charles/RAW_DATABASE/RAISE_RAW"
+csv_filename="metadata_RAISE.csv"
 logfile="${0##*/}.log" # the script name .log
 
 metadata_to_csv () {
