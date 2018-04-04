@@ -1,8 +1,0 @@
-ftp://ftp.tuebingen.mpg.de/kyb/pgehler/ColorCheckerDatabase/ColorCheckerDatabase_RAW_1.zip
-ftp://ftp.tuebingen.mpg.de/kyb/pgehler/ColorCheckerDatabase/ColorCheckerDatabase_RAW_2.zip
-ftp://ftp.tuebingen.mpg.de/kyb/pgehler/ColorCheckerDatabase/ColorCheckerDatabase_RAW_3.zip
-ftp://ftp.tuebingen.mpg.de/kyb/pgehler/ColorCheckerDatabase/ColorCheckerDatabase_RAW_4.zip
-ftp://ftp.tuebingen.mpg.de/kyb/pgehler/ColorCheckerDatabase/ColorCheckerDatabase_RAW_5.zip
-ftp://ftp.tuebingen.mpg.de/kyb/pgehler/ColorCheckerDatabase/ColorCheckerDatabase_RAW_6.zip
-ftp://ftp.tuebingen.mpg.de/kyb/pgehler/ColorCheckerDatabase/ColorCheckerDatabase_RAW_7.zip
-ftp://ftp.tuebingen.mpg.de/kyb/pgehler/ColorCheckerDatabase/ColorCheckerDatabase_RAW_8.zip
