@@ -1,0 +1,23 @@
+On suppose disposer d'une hiérarchie telle que:
+
+/
+|_ DATA_RAW
+   |_ DRESDEN_RAW
+      |_ photo1.dng
+      |_ ...
+      |_ photoN.cr2
+   |_ RAISE_RAW
+   |_ ...
+
+
+Le protocole alors suivi pour établir la base d'entrainement est le suivant:
+1) replaces_spaces_by_underscore_in_filenames.sh '/DATA_RAW'
+2) recursive_raw_images_metadata_to_csv.sh '/DATA_RAW'
+3) recursive_macroProductPGM.sh '/DATA_RAW' 'path/to/dest_dir'
+4) python cp_files_into_label_dir.py $(find . -type f -name \"metadata_*.csv\"))
+
+
+#TODO:
+paramètres des scripts 1)2)3)
+time 3) & print \n à la fin
+retirer path du 'File name' dans 2)
