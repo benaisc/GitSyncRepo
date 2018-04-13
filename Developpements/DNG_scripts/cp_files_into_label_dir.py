@@ -38,7 +38,7 @@ def distribute_files_into_camera_model_dir(groups, source_dir_path, dest_dir_pat
             copyfile(source_dir_path+'/'+dbName+'/'+filename, dest_dir_path+'/'+model+'/'+filename)
 			# in case you prefer to directly move the files instead of copying them
             #os.rename(source_dir_path+'/'+dbName+'/'+filename, dest_dir_path+'/'+model+'/'+filename)
-    
+
 
 def launch_():
     df = pd.DataFrame(columns=['File name', 'Camera model'])
@@ -48,10 +48,12 @@ def launch_():
             dataframe = pd.read_csv(metadata_csv, index_col=False)
             df = pd.concat([df, dataframe[['File name', 'Camera model']]])
 
+
+    df.to_csv('metadata_ALLTRAIN.csv', index=False, mode='w')
     #number_of_files_per_camera(df.groupby(by="Camera model"))
-    distribute_files_into_camera_model_dir(df.groupby(by="Camera model"),
-                                          '/home/guru/STAGE/CODES/Developpements/DNG_scripts/DEVELOPPED_DATABASE',
-                                          '/home/guru/STAGE/CODES/Developpements/DNG_scripts/TRAIN_DATA')
+    #distribute_files_into_camera_model_dir(df.groupby(by="Camera model"),
+    #                                      '/home/guru/STAGE/CODES/Developpements/DNG_scripts/DEVELOPPED_DATABASE',
+    #                                      '/home/guru/STAGE/CODES/Developpements/DNG_scripts/TRAIN_DATA')
 
 
 launch_() if len(sys.argv) > 1 else usage()
