@@ -21,6 +21,7 @@ def create_db(images_dir_path, numpy_filename):
         for f in Path(d).glob('*.pgm'):
             #print("file: {}".format(basename(str(f))))
             img = mpimg.imread(f) # img.shape = (256, 256)
+            img *= 255.0/img.max()
             img = np.reshape(img, newshape=(img.shape[0], img.shape[1], 1))
             #print("img.shape: {}".format(img.shape))
             classDataSet.append(img) # list numpy images
@@ -29,7 +30,7 @@ def create_db(images_dir_path, numpy_filename):
     return np.array(dataset), labels_list
 
 def create_csv_labels(labelsList):
-    file = open("train_db_labels.csv", "w")
+    file = open("lirmm_db_labels.csv", "w")
     i=0
     for label in labelsList:
         #print("{} : {}".format(name, len(group)))
@@ -38,7 +39,7 @@ def create_csv_labels(labelsList):
     file.close()
 
 
-numpy_filename = 'train_db.npy'
+numpy_filename = 'lirmm_db.npy'
 train_dir = '/home/guru/STAGE/CODES/Developpements/DNG_scripts/TRAIN_DATA'
 data, labels = create_db(train_dir, numpy_filename)
 np.save(numpy_filename, data)
