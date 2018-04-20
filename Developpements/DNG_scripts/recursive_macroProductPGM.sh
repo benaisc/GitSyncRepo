@@ -11,14 +11,15 @@ fi
 
 # destination directory containing raw images developped (pgm)
 pgmDir='/home/guru/STAGE/CODES/Developpements/DNG_scripts/DEVELOPPED_DATABASE'
-if [[ -e $pgmDir ]]; then
-	echo 'WARNING: pgmDir already exist'
-	exit
+if [[ ! -e $pgmDir ]]; then
+    # creating developped images directory
+    mkdir -p $pgmDir
+    echo "$pgmDir created"
+else
+	echo 'WARNING: pgmDir already exist, resume development ?'
+    read -p 'Enter to continue, CTRL+C otherwise: ' uservar
 fi
 
-# creating developped images directory
-mkdir -p $pgmDir
-echo "$pgmDir created"
 
 # configuration file used with ufraw
 tmpcfg=`mktemp `
@@ -40,7 +41,7 @@ shopt -s globstar
 current_dir=''
 cpt=0
 for filename in $rawDir/**/*; do # iterate recursively over given dir
-	
+
 	if [[ -d $filename ]]; then
 		current_dir="${filename##*/}"
 		echo -e "\n######## Directory: $current_dir ########"
@@ -51,6 +52,13 @@ for filename in $rawDir/**/*; do # iterate recursively over given dir
 
 	i=${filename##*/}
 	echo -en "\r\033[K($cpt)... $i"
+
+    # Used to resume a stopped dev
+    if [[ -e "$pgmDir/$current_dir/${i%.*}.pgm" ]]; then
+        echo " skipped"
+        continue
+    fi
+
 	#########################
 	#    macroProductPGM    #
 	#########################
