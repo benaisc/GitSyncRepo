@@ -2,6 +2,9 @@
 # Script containing what is necessary to collect & manipulate CSV metadata extracted from EXIF of RAW images
 # Author: Charles-Eric BENAIS-HUGOT, 28/03/2018
 
+"""
+This script is used to filter the intersection between two directories
+"""
 import sys, os
 import pandas as pd
 import numpy as np

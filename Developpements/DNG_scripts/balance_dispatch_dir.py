@@ -3,6 +3,11 @@ from shutil import copy
 import os
 from random import shuffle
 
+"""
+This script is used to random select files over all directories contained in path
+First, we select all directories containing more than 500 files
+Then, we shuffle the randomly selected 590 files &n distribute them into dest_dir
+"""
 def select_n_distribute(dir_path, dest_dir):
     # Return a list of directories contained in images_dir_path
     dir_list = [str(d) for d in Path(dir_path).glob('*') if d.is_dir()]

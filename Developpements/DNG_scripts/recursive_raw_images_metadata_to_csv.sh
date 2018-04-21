@@ -1,6 +1,10 @@
 #!/bin/bash
 # @Author: Charles-Eric BENAIS-HUGOT, 27/03/2018
 
+"""
+This script iterate recursively over given dir, call exiv2 on each raw image,
+then collect each outputed summary lines to write a final CSV for each dir
+"""
 
 directory_raws="/home/guru/STAGE/CODES/Developpements/DNG_scripts/DATABAZ" # directory containing raw databases directories
 logfile="${0##*/}.log" # the script name .log
@@ -14,7 +18,7 @@ metadata_to_csv () {
 
 	shopt -s globstar
 	for filename in $directory_raws/**/*; do # iterate over given dir
-		
+
 		if [[ -d $filename ]]; then
 			csv_filename="metadata_${filename##*/}.csv"
 			echo "File name,File size,MIME type,\
@@ -29,7 +33,7 @@ White balance,Thumbnail,Copyright,Exif comment" > $csv_filename
 		fi
 
 		metadata=`exiv2 --print summary "$filename" 2>> $logfile` # print dng metadata with exiv2 tool, redirect errors to logfile
-		
+
 		formatted_lines=""
 
 		while read -r line; do # iterate over each line of printed metadata
@@ -45,7 +49,7 @@ White balance,Thumbnail,Copyright,Exif comment" > $csv_filename
 		done <<< "$metadata"
 
 		echo "${formatted_lines:1}" >> $csv_filename # append data without first ','
-		
+
 	done
 }
 

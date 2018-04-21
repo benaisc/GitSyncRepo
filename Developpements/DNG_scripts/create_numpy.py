@@ -4,6 +4,11 @@ from os.path import basename
 import matplotlib.image as mpimg
 import curses
 
+"""
+This script read all files recursively in given directory, create a class of
+each dir, and put the images (normalized numpy arrays) in a npy binary format
+in the form: (num_classes, num_exemple, h, w, c)
+"""
 
 def create_db(images_dir_path):
     # Return a list of directories contained in images_dir_path
